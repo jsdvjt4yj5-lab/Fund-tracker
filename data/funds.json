@@ -1,0 +1,359 @@
+{
+  "source": "https://sslsecure.maybank.com.sg/scripts/mbb_ut_pricelist.jsp",
+  "last_scraped": "2026-08-17T07:14:03+00:00",
+  "matched_count": 0,
+  "unmatched_count": 70,
+  "funds": [],
+  "unmatched": [
+    {
+      "target_fund_name": "Allianz Global Investors Fund - Allianz Income and Growth AMi3 (H2-SGD)",
+      "target_manager": "Allianz Global Investors",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "Amundi Funds - Cash USD A2 USD (C)",
+      "target_manager": "Amundi",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "Amundi Funds - US Bond A2 SGD Hgd (C)",
+      "target_manager": "Amundi",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "Amundi Funds - US Bond A2 USD (C)",
+      "target_manager": "Amundi",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "Amundi Funds - US Equity Fundamental Growth A USD C",
+      "target_manager": "Amundi",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "Ascend Asia Trust Global Equity Fund Class A SGD (Hedged)",
+      "target_manager": "Ascend Asia AM",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "Ascend Asia Trust Global Multi Asset Growth Fund Class A USD",
+      "target_manager": "Ascend Asia AM",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "Ascend Asia Trust Global Multi Asset Income Fund Class A USD",
+      "target_manager": "Ascend Asia AM",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "AXA World Funds - Global High Yield Bonds A Capitalisation SGD (Hedged)",
+      "target_manager": "AXA IM",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "BlackRock Global Funds - Global Allocation Fund A2 SGD Hedged",
+      "target_manager": "BlackRock",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "BlackRock Global Funds - World Energy Fund A2 SGD Hedged",
+      "target_manager": "BlackRock",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "BlackRock Global Funds - World Gold Fund A2 SGD Hedged",
+      "target_manager": "BlackRock",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "BlackRock Global Funds - World Healthscience Fund A2",
+      "target_manager": "BlackRock",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "BlackRock Global Funds - World Mining Fund A2 SGD Hedged",
+      "target_manager": "BlackRock",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "BlackRock Global Funds - World Technology Fund A2",
+      "target_manager": "BlackRock",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "Fidelity Funds - Global Financial Services Fund A-Acc-SGD",
+      "target_manager": "Fidelity International",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "Franklin Global Sukuk Fund A(Mdis)SGD",
+      "target_manager": "Franklin Templeton",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "Franklin Income Fund A(Mdis)SGD-H1",
+      "target_manager": "Franklin Templeton",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "Franklin India Fund A(acc)SGD",
+      "target_manager": "Franklin Templeton",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "Franklin Technology Fund A (Acc) USD",
+      "target_manager": "Franklin Templeton",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "Fundsmith Equity Fund R EUR Acc",
+      "target_manager": "Fundsmith",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "HSBC Global Investment Funds - Asia Bond S47M3HSGD",
+      "target_manager": "HSBC AM",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "HSBC Global Investment Funds - Asia Pacific ex Japan Equity High Dividend S48M2SGD",
+      "target_manager": "HSBC AM",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "HSBC Global Investment Funds - Global Equity Climate Transition AD",
+      "target_manager": "HSBC AM",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "HSBC Global Investment Funds - Global Short Duration Bond ACHSGD",
+      "target_manager": "HSBC AM",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "HSBC Global Investment Funds - Indian Equity AD",
+      "target_manager": "HSBC AM",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "HSBC Life Asian Balanced",
+      "target_manager": "HSBC Life",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "HSBC Life Asian Growth",
+      "target_manager": "HSBC Life",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "HSBC Life Emerging Markets Opportunities Fund",
+      "target_manager": "HSBC Life",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "HSBC Life Fortress Fund A",
+      "target_manager": "HSBC Life",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "HSBC Life Global Balanced Fund",
+      "target_manager": "HSBC Life",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "HSBC Life Global Growth Fund",
+      "target_manager": "HSBC Life",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "HSBC Life Global High Growth Fund",
+      "target_manager": "HSBC Life",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "HSBC Life Global Perspective Fund",
+      "target_manager": "HSBC Life",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "HSBC Life Global Secure Fund",
+      "target_manager": "HSBC Life",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "HSBC Life Greater China Fund",
+      "target_manager": "HSBC Life",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "HSBC Life India Opportunities Fund",
+      "target_manager": "HSBC Life",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "HSBC Life Shariah Global Equity",
+      "target_manager": "HSBC Life",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "HSBC Life Short Duration Bond",
+      "target_manager": "HSBC Life",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "HSBC Life Singapore Balanced Fund",
+      "target_manager": "HSBC Life",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "HSBC Life Singapore Bond Fund",
+      "target_manager": "HSBC Life",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "HSBC Life Singapore Equity Fund",
+      "target_manager": "HSBC Life",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "HSBC Portfolios - World Selection 5 AMFLXHSGD",
+      "target_manager": "HSBC AM",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "Janus Henderson Horizon Discovering New Alpha Fund A2 HSGD Acc",
+      "target_manager": "Janus Henderson",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "JPMorgan Funds - Greater China Fund A (acc) USD",
+      "target_manager": "JPMorgan",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "JPMorgan Funds - India Fund A (acc) USD",
+      "target_manager": "JPMorgan",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "JPMorgan Investment Funds - Global Income Fund A (mth) SGD (hedged)",
+      "target_manager": "JPMorgan",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "JPMorgan Investment Funds - Global Income Fund A (mth) USD (hedged)",
+      "target_manager": "JPMorgan",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "Mirova Funds - Mirova Global Sustainable Equity Fund R/A-NPF (USD)",
+      "target_manager": "Natixis",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "Neuberger Strategic Income Fund SGD A (Monthly) Distributing Class",
+      "target_manager": "Neuberger Berman",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "PGIM Global Total Return Bond Fund SGD Hedged A Distribution (Q) Class",
+      "target_manager": "PGIM",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "Pictet-Premium Brands HP SGD",
+      "target_manager": "Pictet",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "PIMCO GIS Income Fund Administrative SGD (Hedged) Income",
+      "target_manager": "PIMCO",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "PineBridge Asia ex Japan Small Cap Equity Fund Class A5",
+      "target_manager": "PineBridge",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "Robeco Credit Income BxH SGD",
+      "target_manager": "Robeco",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "Schroder Asian Growth Fund Class SGD A Distribution Units",
+      "target_manager": "Schroders",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "Schroder Asian Income SGD X Dis",
+      "target_manager": "Schroders",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "Schroder Global Emerging Market Opportunities Fund",
+      "target_manager": "Schroders",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "Schroder International Selection Fund Asian Dividend Maximiser A Distribution SGD Hedged M",
+      "target_manager": "Schroders",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "Schroder International Selection Fund Asian Dividend Maximiser A Distribution USD MF",
+      "target_manager": "Schroders",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "Schroder International Selection Fund Global Equity Alpha A Accumulation USD",
+      "target_manager": "Schroders",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "Schroder International Selection Fund Taiwanese Equity A Accumulation USD",
+      "target_manager": "Schroders",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "Schroder Multi-Asset Revolution 30 A SGD Accumulation",
+      "target_manager": "Schroders",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "Schroder Multi-Asset Revolution 50",
+      "target_manager": "Schroders",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "Schroder Multi-Asset Revolution 70",
+      "target_manager": "Schroders",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "Schroder Singapore Fixed Income Fund Class A Acc",
+      "target_manager": "Schroders",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "Schroder Singapore Trust SGD A Dis",
+      "target_manager": "Schroders",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "Templeton Shariah Global Equity Fund A(acc)SGD",
+      "target_manager": "Franklin Templeton",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "United SGD Fund - Class A SGD Acc",
+      "target_manager": "UOBAM",
+      "best_score": 0.0
+    },
+    {
+      "target_fund_name": "United Singapore Bond Fund - Class A SGD Acc",
+      "target_manager": "UOBAM",
+      "best_score": 0.0
+    }
+  ]
+}
