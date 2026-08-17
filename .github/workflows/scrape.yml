@@ -19,6 +19,21 @@ jobs:
 
       - run: python scrape_fund_prices.py --targets targets.csv --out data/funds.json
 
+      # If the scrape script fails (e.g. "FATAL: Only 0 rows parsed"), it will have
+      # written data/_debug_last_fetch.html with the raw response it received.
+      # The step above stops the job on failure, so nothing downstream runs by
+      # default -- this step uses `if: failure()` to run anyway, and uploads that
+      # file as a downloadable artifact (Actions run page -> Summary -> Artifacts)
+      # instead of committing debug HTML into the repo's git history.
+      - name: Upload debug HTML on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-fetch-html
+          path: data/_debug_last_fetch.html
+          if-no-files-found: warn
+          retention-days: 7
+
       - name: Commit updated data
         run: |
           git config user.name "fund-price-bot"
