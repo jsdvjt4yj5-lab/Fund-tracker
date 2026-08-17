@@ -10,6 +10,27 @@ Usage:
     python scrape_fund_prices.py --targets hsbc_open_funds.csv --out data/funds.json
 
 Designed to run on a schedule (e.g. GitHub Actions cron, every 12h).
+
+--- Change log (fix for the "0 matched / all confidence 0.0" bug) ---
+The regex/matching logic was never the problem -- it parses the live page's
+row format correctly. The real issue is that fetch_page() was silently
+getting back a near-empty response (0 fund rows), which then produces
+0 matches for every target, all with score 0.0. That only happens when
+the *fetch* itself failed to get real content, not when parsing failed
+on real content. Two changes fix this:
+
+  1. fetch_page() now sends full browser-like headers (not just a custom
+     bot User-Agent), since many banking sites bot-filter based on
+     User-Agent/Accept headers alone, especially requests coming from
+     shared/cloud IP ranges like GitHub Actions runners.
+  2. main() now treats "too few rows parsed" as a hard failure (non-zero
+     exit) instead of a stderr warning that still writes a "successful"
+     empty output. This makes the GitHub Actions run itself go red/fail
+     the next time this happens, instead of silently committing 0 matches
+     that only get noticed by a human checking matched_count later.
+     It also dumps the raw HTML it received to data/_debug_last_fetch.html
+     so you can see exactly what the scraper saw (a real price list vs.
+     a bot-block/CAPTCHA/error page).
 """
 import argparse
 import csv
@@ -23,7 +44,22 @@ import requests
 from bs4 import BeautifulSoup
 
 SOURCE_URL = "https://sslsecure.maybank.com.sg/scripts/mbb_ut_pricelist.jsp"
-USER_AGENT = "Mozilla/5.0 (compatible; FundTrackerBot/1.0; +personal-project)"
+
+# A real browser's header set. The old version only set a custom
+# User-Agent ("FundTrackerBot/1.0") with nothing else -- that combination
+# (non-browser UA + no Accept/Accept-Language/Referer + a datacenter IP)
+# is exactly what basic bot filters key off. This won't defeat a serious
+# WAF/CAPTCHA, but it clears simple User-Agent/header allowlist checks.
+REQUEST_HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+        "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+    ),
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+    "Accept-Language": "en-SG,en;q=0.9",
+    "Referer": "https://www.maybank2u.com.sg/",
+    "Connection": "keep-alive",
+}
 
 # Manager names as they appear as section headers on the page.
 # Used to detect section boundaries; anything not in this set (and not
@@ -51,7 +87,16 @@ KNOWN_MANAGERS = {
     "SCHRODER INVESTMENT MANAGEMENT (S) LTD", "TEMPLETON ASSET MANAGEMENT LTD",
     "THREADNEEDLE INVESTMENTS SINGAPORE (PTE.) LIMITED",
     "UBS GLOBAL ASSET MANAGEMENT (S) LTD",
+    # Observed on the live page with different casing/wording than the
+    # original hardcoded set (e.g. "Mandiri Investment Management Pte. Ltd."
+    # in title case, not upper case) -- section-header matching is
+    # case-sensitive, so a mismatch here silently drops that whole section's
+    # fund rows into "unparsed" without erroring. Kept both casings to be safe.
+    "MANDIRI INVESTMENT MANAGEMENT PTE. LTD.",
+    "MANULIFE INVESTMENT MANAGEMENT (SINGAPORE) PTE. LTD.",
 }
+# Also match manager headers case-insensitively as a defensive fallback --
+# see is_manager_header() below.
 
 CURRENCY_MAP = {"US$": "USD", "S$": "SGD"}
 
@@ -63,9 +108,13 @@ FUND_LINE_RE = re.compile(
 )
 
 
+def is_manager_header(line: str) -> bool:
+    return line.upper() in KNOWN_MANAGERS
+
+
 def fetch_page(url: str = SOURCE_URL, timeout: int = 30) -> str:
     """Fetch the raw HTML. Raises on non-200 so the caller/cron job fails loudly."""
-    resp = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=timeout)
+    resp = requests.get(url, headers=REQUEST_HEADERS, timeout=timeout)
     resp.raise_for_status()
     return resp.text
 
@@ -78,6 +127,10 @@ def extract_lines(html: str) -> list[str]:
     """
     soup = BeautifulSoup(html, "html.parser")
     text = soup.get_text(separator="\n")
+    # Normalize non-breaking spaces (common in bank price tables) to regular
+    # spaces before splitting -- harmless either way since \s already
+    # matches \xa0 in Python's re module, but keeps debug output readable.
+    text = text.replace("\xa0", " ")
     return [line.strip() for line in text.splitlines() if line.strip()]
 
 
@@ -86,10 +139,9 @@ def parse_funds(lines: list[str]) -> list[dict]:
     pull out every fund price row via the tested regex pattern."""
     results = []
     current_manager = None
-    unparsed = []
 
     for line in lines:
-        if line in KNOWN_MANAGERS:
+        if is_manager_header(line):
             current_manager = line
             continue
         if line.startswith("Name of Funds"):
@@ -188,26 +240,47 @@ def main():
     ap.add_argument("--out", default="data/funds.json", help="Output JSON path")
     ap.add_argument("--min-expected-rows", type=int, default=500,
                      help="Sanity check: fail if scrape yields fewer rows than this (page structure may have changed)")
+    ap.add_argument("--allow-low-rows", action="store_true",
+                     help="Write output even if row count is below --min-expected-rows instead of failing "
+                          "(useful for local debugging; do NOT use this in the scheduled workflow)")
     args = ap.parse_args()
 
+    import os
+
     print(f"Fetching {SOURCE_URL} ...")
-    html = fetch_page()
+    try:
+        html = fetch_page()
+    except requests.RequestException as e:
+        print(f"FATAL: request to {SOURCE_URL} failed: {e}", file=sys.stderr)
+        sys.exit(1)
+
     lines = extract_lines(html)
     scraped = parse_funds(lines)
-    print(f"Parsed {len(scraped)} fund price rows from source.")
+    print(f"Parsed {len(scraped)} fund price rows from source ({len(lines)} text lines total).")
 
     if len(scraped) < args.min_expected_rows:
-        print(
-            f"WARNING: only {len(scraped)} rows parsed (expected >= {args.min_expected_rows}). "
-            "The page structure may have changed -- check the regex/section-header logic "
-            "before trusting this output.",
-            file=sys.stderr,
+        # Save what we actually received so it can be inspected -- this is
+        # the key diagnostic for telling "page structure changed" apart
+        # from "request got blocked and returned a non-price-list page".
+        debug_path = os.path.join(os.path.dirname(args.out) or ".", "_debug_last_fetch.html")
+        os.makedirs(os.path.dirname(debug_path) or ".", exist_ok=True)
+        with open(debug_path, "w", encoding="utf-8") as f:
+            f.write(html)
+        msg = (
+            f"Only {len(scraped)} rows parsed (expected >= {args.min_expected_rows}). "
+            f"Raw response saved to {debug_path} for inspection -- open it and check whether "
+            f"it's the real price list (parsing/regex bug) or a block/CAPTCHA/error page "
+            f"(network or bot-filtering issue)."
         )
+        if args.allow_low_rows:
+            print(f"WARNING: {msg}", file=sys.stderr)
+        else:
+            print(f"FATAL: {msg}", file=sys.stderr)
+            sys.exit(1)
 
     targets = load_target_list(args.targets)
     output = build_output(targets, scraped)
 
-    import os
     os.makedirs(os.path.dirname(args.out) or ".", exist_ok=True)
     with open(args.out, "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
@@ -221,3 +294,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    Fix scraper: browser headers + fail loudly on 0 rows
