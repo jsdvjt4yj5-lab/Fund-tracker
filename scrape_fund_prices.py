@@ -11,26 +11,37 @@ Usage:
 
 Designed to run on a schedule (e.g. GitHub Actions cron, every 12h).
 
---- Change log (fix for the "0 matched / all confidence 0.0" bug) ---
-The regex/matching logic was never the problem -- it parses the live page's
-row format correctly. The real issue is that fetch_page() was silently
-getting back a near-empty response (0 fund rows), which then produces
-0 matches for every target, all with score 0.0. That only happens when
-the *fetch* itself failed to get real content, not when parsing failed
-on real content. Two changes fix this:
+--- Change log ---
+v2 (this version) -- fixed the real bug behind "0 matched / everything at
+confidence 0.0": the page renders each fund as a genuine HTML <TR> with
+FOUR SEPARATE <TD> cells (name, bid/NAV price, offer price, date). The old
+parser flattened the page to plain text via BeautifulSoup's
+get_text(separator='\\n') and tried to match a single-line regex like
+"NAME  US$1.2300 - 14 Aug 2026" against it -- but get_text() puts each
+<TD>'s text on its OWN line, so the name, price and date never appear
+together on one line, and the regex could never match anything. Confirmed
+via a real captured response: 0 rows via the old text-line approach,
+1036+ rows via parsing the actual <TR>/<TD> structure directly (verified
+against a real fetch from the live page on 17 Aug 2026).
 
-  1. fetch_page() now sends full browser-like headers (not just a custom
-     bot User-Agent), since many banking sites bot-filter based on
-     User-Agent/Accept headers alone, especially requests coming from
-     shared/cloud IP ranges like GitHub Actions runners.
-  2. main() now treats "too few rows parsed" as a hard failure (non-zero
-     exit) instead of a stderr warning that still writes a "successful"
-     empty output. This makes the GitHub Actions run itself go red/fail
-     the next time this happens, instead of silently committing 0 matches
-     that only get noticed by a human checking matched_count later.
-     It also dumps the raw HTML it received to data/_debug_last_fetch.html
-     so you can see exactly what the scraper saw (a real price list vs.
-     a bot-block/CAPTCHA/error page).
+parse_funds() now walks soup.find_all("tr") directly:
+  - A manager section header is a <TR class="ttitle"> with one <TD>.
+  - A fund row is any other <TR> with >= 4 <TD>s, where TD[1]'s text
+    matches a currency+price pattern (e.g. "US$130.9200"). This also
+    means the old hardcoded KNOWN_MANAGERS allowlist is gone -- manager
+    names are read straight from the page's own section headers, so
+    case/spelling drift there can no longer silently drop a whole
+    section's funds the way it did before.
+
+v1 changes (kept from the previous fix attempt, still relevant):
+  - fetch_page() sends full browser-like headers, not just a custom bot
+    User-Agent, since that's a common simple bot-filter trigger.
+  - main() hard-fails (non-zero exit) if row count comes back too low,
+    instead of silently writing an "empty but technically successful"
+    output, and dumps the raw HTML to data/_debug_last_fetch.html so the
+    actual response can be inspected. This is how the v2 bug above was
+    actually found and fixed -- worth keeping for the next time
+    Maybank changes their page structure.
 """
 import argparse
 import csv
@@ -45,11 +56,9 @@ from bs4 import BeautifulSoup
 
 SOURCE_URL = "https://sslsecure.maybank.com.sg/scripts/mbb_ut_pricelist.jsp"
 
-# A real browser's header set. The old version only set a custom
-# User-Agent ("FundTrackerBot/1.0") with nothing else -- that combination
-# (non-browser UA + no Accept/Accept-Language/Referer + a datacenter IP)
-# is exactly what basic bot filters key off. This won't defeat a serious
-# WAF/CAPTCHA, but it clears simple User-Agent/header allowlist checks.
+# A real browser's header set -- clears simple User-Agent/header allowlist
+# checks some bot filters use. (Turned out not to be the actual bug here --
+# the fetch was always getting real content back -- but harmless to keep.)
 REQUEST_HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -61,55 +70,13 @@ REQUEST_HEADERS = {
     "Connection": "keep-alive",
 }
 
-# Manager names as they appear as section headers on the page.
-# Used to detect section boundaries; anything not in this set (and not
-# a "Name of Funds..." column header) is treated as a fund data row.
-KNOWN_MANAGERS = {
-    "ABERDEEN ASSET MANAGEMENT ASIA LIMITED", "ALLIANCEBERNSTEIN INVESTMENTS",
-    "ALLIANZ GLOBAL INVESTORS SINGAPORE LIMITED", "AMANAH MUTUAL BERHAD",
-    "AMUNDI ASSET MANAGEMENT (S) LTD", "BLACKROCK",
-    "BNP PARIBAS ASSET MANAGEMENT SINGAPORE LTD", "BNY MELLON GLOBAL MANAGEMENT LIMITED",
-    "DEUTSCHE ASSET MANAGEMENT (ASIA) LTD", "EASTSPRING INVESTMENTS (S) LTD",
-    "FIL INVESTMENT MANAGEMENT (S) LTD",
-    "FIRST SENTIER INVESTORS (HONG KONG) LIMITED (HKD)",
-    "FIRST SENTIER INVESTORS (HONG KONG) LIMITED (USD)",
-    "FIRST SENTIER INVESTORS (SINGAPORE)", "FULLERTON FUND MANAGEMENT COMPANY LTD",
-    "GOLDMAN SACHS ASSET MANAGEMENT",
-    "HSBC GLOBAL ASSET MANAGEMENT (SINGAPORE) LIMITED",
-    "IFAST FINANCIAL PTE LTD", "IFAST FINANCIAL PTE LTD (USD)",
-    "JANUS HENDERSON INVESTORS", "JPMORGAN ASSET MANAGEMENT (S) LTD",
-    "LEGG MASON ASSET MANAGEMENT (S) PTE LTD", "LIONGLOBAL INVESTORS LIMITED",
-    "MAYBANK ASSET MANAGEMENT", "MAYBANK ASSET MANAGEMENT SDN BHD",
-    "MANDIRI INVESTMENT MANAGEMENT PTE. LTD.",
-    "MANULIFE INVESTMENT MANAGEMENT (SINGAPORE) PTE. LTD.",
-    "NATIXIS GLOBAL ASSET MANAGEMENT", "NEUBERGER BERMAN", "PIMCO ASIA PTE LTD",
-    "PINEBRIDGE INVESTMENTS SINGAPORE LIMITED",
-    "SCHRODER INVESTMENT MANAGEMENT (S) LTD", "TEMPLETON ASSET MANAGEMENT LTD",
-    "THREADNEEDLE INVESTMENTS SINGAPORE (PTE.) LIMITED",
-    "UBS GLOBAL ASSET MANAGEMENT (S) LTD",
-    # Observed on the live page with different casing/wording than the
-    # original hardcoded set (e.g. "Mandiri Investment Management Pte. Ltd."
-    # in title case, not upper case) -- section-header matching is
-    # case-sensitive, so a mismatch here silently drops that whole section's
-    # fund rows into "unparsed" without erroring. Kept both casings to be safe.
-    "MANDIRI INVESTMENT MANAGEMENT PTE. LTD.",
-    "MANULIFE INVESTMENT MANAGEMENT (SINGAPORE) PTE. LTD.",
-}
-# Also match manager headers case-insensitively as a defensive fallback --
-# see is_manager_header() below.
-
 CURRENCY_MAP = {"US$": "USD", "S$": "SGD"}
 
-FUND_LINE_RE = re.compile(
-    r"^(?P<name>.+?)\s+"
-    r"(?P<currency>US\$|S\$|EUR|GBP|AUD|HKD|CNH|JPY|MYR|IDR|CHF|NZD)"
-    r"(?P<price>[\d,]+\.\d+)\s*-\s*"
-    r"(?P<date>\d{2}\s+\w{3}\s+\d{4})\s*$"
+# Matches a price cell's full text, e.g. "US$130.9200", "S$3.5225", "CNH10.8697".
+PRICE_RE = re.compile(
+    r"^(?P<currency>US\$|S\$|EUR|GBP|AUD|HKD|CNH|JPY|MYR|IDR|CHF|NZD)"
+    r"(?P<price>[\d,]+\.\d+)$"
 )
-
-
-def is_manager_header(line: str) -> bool:
-    return line.upper() in KNOWN_MANAGERS
 
 
 def fetch_page(url: str = SOURCE_URL, timeout: int = 30) -> str:
@@ -119,48 +86,48 @@ def fetch_page(url: str = SOURCE_URL, timeout: int = 30) -> str:
     return resp.text
 
 
-def extract_lines(html: str) -> list[str]:
-    """
-    Convert the page to one text line per visual row. BeautifulSoup's
-    get_text(separator='\\n') mirrors how the page reads visually,
-    which is what the tested regex below expects.
-    """
+def parse_funds(html: str) -> list[dict]:
+    """Walk the page's actual <TR>/<TD> table structure directly (not
+    flattened text -- see module docstring change log for why). Each
+    fund is a <TR> with the cell sequence: [name, bid/NAV price,
+    offer price, date]. Manager section headers are <TR class="ttitle">
+    with a single <TD> naming the manager -- read straight off the page,
+    no hardcoded manager list needed."""
     soup = BeautifulSoup(html, "html.parser")
-    text = soup.get_text(separator="\n")
-    # Normalize non-breaking spaces (common in bank price tables) to regular
-    # spaces before splitting -- harmless either way since \s already
-    # matches \xa0 in Python's re module, but keeps debug output readable.
-    text = text.replace("\xa0", " ")
-    return [line.strip() for line in text.splitlines() if line.strip()]
-
-
-def parse_funds(lines: list[str]) -> list[dict]:
-    """Walk the line stream, tracking the current manager section, and
-    pull out every fund price row via the tested regex pattern."""
     results = []
     current_manager = None
 
-    for line in lines:
-        if is_manager_header(line):
-            current_manager = line
+    for tr in soup.find_all("tr"):
+        tds = tr.find_all("td")
+        if not tds:
             continue
-        if line.startswith("Name of Funds"):
-            continue  # column header row
-        if line.startswith("Please Select") or line == "Top" or line.startswith("Refer to"):
-            continue  # dropdown placeholder / nav noise
 
-        m = FUND_LINE_RE.match(line)
-        if m:
-            raw_ccy = m.group("currency")
-            results.append({
-                "manager": current_manager,
-                "fund_name": m.group("name").strip(),
-                "currency": CURRENCY_MAP.get(raw_ccy, raw_ccy),
-                "price": float(m.group("price").replace(",", "")),
-                "price_date": m.group("date"),
-            })
-        # Anything else (marketing text, disclaimers) is silently
-        # skipped -- only lines matching the fund-row pattern are kept.
+        if "ttitle" in (tr.get("class") or []):
+            current_manager = tds[0].get_text(strip=True)
+            continue
+
+        first_text = tds[0].get_text(strip=True)
+        if not first_text or first_text.startswith("Name of Funds"):
+            continue  # blank row / column header row
+
+        if len(tds) < 4:
+            continue  # not a fund data row (e.g. the "Top" link row)
+
+        price_text = tds[1].get_text(strip=True)
+        date_text = tds[3].get_text(strip=True)
+
+        m = PRICE_RE.match(price_text)
+        if not m:
+            continue  # doesn't look like a price cell -- skip defensively
+
+        raw_ccy = m.group("currency")
+        results.append({
+            "manager": current_manager,
+            "fund_name": first_text,
+            "currency": CURRENCY_MAP.get(raw_ccy, raw_ccy),
+            "price": float(m.group("price").replace(",", "")),
+            "price_date": date_text,
+        })
 
     return results
 
@@ -254,14 +221,10 @@ def main():
         print(f"FATAL: request to {SOURCE_URL} failed: {e}", file=sys.stderr)
         sys.exit(1)
 
-    lines = extract_lines(html)
-    scraped = parse_funds(lines)
-    print(f"Parsed {len(scraped)} fund price rows from source ({len(lines)} text lines total).")
+    scraped = parse_funds(html)
+    print(f"Parsed {len(scraped)} fund price rows from source.")
 
     if len(scraped) < args.min_expected_rows:
-        # Save what we actually received so it can be inspected -- this is
-        # the key diagnostic for telling "page structure changed" apart
-        # from "request got blocked and returned a non-price-list page".
         debug_path = os.path.join(os.path.dirname(args.out) or ".", "_debug_last_fetch.html")
         os.makedirs(os.path.dirname(debug_path) or ".", exist_ok=True)
         with open(debug_path, "w", encoding="utf-8") as f:
@@ -269,7 +232,7 @@ def main():
         msg = (
             f"Only {len(scraped)} rows parsed (expected >= {args.min_expected_rows}). "
             f"Raw response saved to {debug_path} for inspection -- open it and check whether "
-            f"it's the real price list (parsing/regex bug) or a block/CAPTCHA/error page "
+            f"it's the real price list (parsing bug) or a block/CAPTCHA/error page "
             f"(network or bot-filtering issue)."
         )
         if args.allow_low_rows:
