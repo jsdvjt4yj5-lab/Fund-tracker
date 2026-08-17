@@ -294,4 +294,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-    Fix scraper: browser headers + fail loudly on 0 rows
+    
