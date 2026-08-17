@@ -1,359 +1,756 @@
 {
   "source": "https://sslsecure.maybank.com.sg/scripts/mbb_ut_pricelist.jsp",
-  "last_scraped": "2026-08-17T07:14:03+00:00",
-  "matched_count": 0,
-  "unmatched_count": 70,
-  "funds": [],
-  "unmatched": [
+  "last_scraped": "2026-08-17T11:40:19+00:00",
+  "matched_count": 66,
+  "unmatched_count": 4,
+  "funds": [
     {
       "target_fund_name": "Allianz Global Investors Fund - Allianz Income and Growth AMi3 (H2-SGD)",
       "target_manager": "Allianz Global Investors",
-      "best_score": 0.0
+      "matched_fund_name": "ALLIANZ INCOME AND GROWTH - CLASS AMi3 DIS (H2-SGD)",
+      "manager": "ALLIANZ GLOBAL INVESTORS SINGAPORE LIMITED",
+      "currency": "SGD",
+      "price": 7.8427,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.661,
+      "needs_review": true
     },
     {
       "target_fund_name": "Amundi Funds - Cash USD A2 USD (C)",
       "target_manager": "Amundi",
-      "best_score": 0.0
+      "matched_fund_name": "AMUNDI FUNDS CASH USD - A2 USD (C)",
+      "manager": "AMUNDI ASSET MANAGEMENT (S) LTD",
+      "currency": "USD",
+      "price": 130.92,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 1.0,
+      "needs_review": false
     },
     {
       "target_fund_name": "Amundi Funds - US Bond A2 SGD Hgd (C)",
       "target_manager": "Amundi",
-      "best_score": 0.0
+      "matched_fund_name": "AMUNDI FUNDS CASH USD - A2 USD (C)",
+      "manager": "AMUNDI ASSET MANAGEMENT (S) LTD",
+      "currency": "USD",
+      "price": 130.92,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.776,
+      "needs_review": true
     },
     {
       "target_fund_name": "Amundi Funds - US Bond A2 USD (C)",
       "target_manager": "Amundi",
-      "best_score": 0.0
+      "matched_fund_name": "AMUNDI FUNDS CASH USD - A2 USD (C)",
+      "manager": "AMUNDI ASSET MANAGEMENT (S) LTD",
+      "currency": "USD",
+      "price": 130.92,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.857,
+      "needs_review": false
     },
     {
       "target_fund_name": "Amundi Funds - US Equity Fundamental Growth A USD C",
       "target_manager": "Amundi",
-      "best_score": 0.0
+      "matched_fund_name": "AMUNDI FUNDS POLEN CAPITAL GLOBAL GROWTH A2 (USD) ACC",
+      "manager": "AMUNDI ASSET MANAGEMENT (S) LTD",
+      "currency": "USD",
+      "price": 19.48,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.667,
+      "needs_review": true
     },
     {
       "target_fund_name": "Ascend Asia Trust Global Equity Fund Class A SGD (Hedged)",
       "target_manager": "Ascend Asia AM",
-      "best_score": 0.0
+      "matched_fund_name": "SCHRODER ASIAN EQUITY YIELD FUND CLASS A (SGD)",
+      "manager": "SCHRODER INVESTMENT MANAGEMENT (S) LTD",
+      "currency": "SGD",
+      "price": 1.624,
+      "price_date": "13 Aug 2026",
+      "match_confidence": 0.641,
+      "needs_review": true
     },
     {
       "target_fund_name": "Ascend Asia Trust Global Multi Asset Growth Fund Class A USD",
       "target_manager": "Ascend Asia AM",
-      "best_score": 0.0
+      "matched_fund_name": "MAYBANK GLOBAL SHARIAH MULTI ASSETS I FUND - CLASS A (ACC) USD",
+      "manager": "MAYBANK ASSET MANAGEMENT",
+      "currency": "USD",
+      "price": 1.0,
+      "price_date": "03 Feb 2025",
+      "match_confidence": 0.65,
+      "needs_review": true
     },
     {
       "target_fund_name": "Ascend Asia Trust Global Multi Asset Income Fund Class A USD",
       "target_manager": "Ascend Asia AM",
-      "best_score": 0.0
+      "matched_fund_name": "BGF - GLOBAL MULTI ASSET INCOME FUND A6 USD",
+      "manager": "BLACKROCK",
+      "currency": "USD",
+      "price": 8.56,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.733,
+      "needs_review": true
     },
     {
       "target_fund_name": "AXA World Funds - Global High Yield Bonds A Capitalisation SGD (Hedged)",
       "target_manager": "AXA IM",
-      "best_score": 0.0
+      "matched_fund_name": "FIDELITY FUNDS - EUROPEAN HIGH YIELD FUND A - MDIST (SGD-H)",
+      "manager": "FIL INVESTMENT MANAGEMENT (S) LTD",
+      "currency": "SGD",
+      "price": 0.978,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.597,
+      "needs_review": true
     },
     {
       "target_fund_name": "BlackRock Global Funds - Global Allocation Fund A2 SGD Hedged",
       "target_manager": "BlackRock",
-      "best_score": 0.0
+      "matched_fund_name": "BGF - GLOBAL ALLOCATION FUND A2 (SGD-H)",
+      "manager": "BLACKROCK",
+      "currency": "SGD",
+      "price": 21.42,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.729,
+      "needs_review": true
     },
     {
       "target_fund_name": "BlackRock Global Funds - World Energy Fund A2 SGD Hedged",
       "target_manager": "BlackRock",
-      "best_score": 0.0
+      "matched_fund_name": "BGF - WORLD ENERGY FUND A2 (SGD-H)",
+      "manager": "BLACKROCK",
+      "currency": "SGD",
+      "price": 9.27,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.698,
+      "needs_review": true
     },
     {
       "target_fund_name": "BlackRock Global Funds - World Gold Fund A2 SGD Hedged",
       "target_manager": "BlackRock",
-      "best_score": 0.0
+      "matched_fund_name": "BGF - WORLD GOLD FUND A2 SGD-HEDGED",
+      "manager": "BLACKROCK",
+      "currency": "SGD",
+      "price": 15.79,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.776,
+      "needs_review": true
     },
     {
       "target_fund_name": "BlackRock Global Funds - World Healthscience Fund A2",
       "target_manager": "BlackRock",
-      "best_score": 0.0
+      "matched_fund_name": "BGF - WORLD HEALTHSCIENCE FUND A2 (EUR)",
+      "manager": "BLACKROCK",
+      "currency": "EUR",
+      "price": 66.91,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.713,
+      "needs_review": true
     },
     {
       "target_fund_name": "BlackRock Global Funds - World Mining Fund A2 SGD Hedged",
       "target_manager": "BlackRock",
-      "best_score": 0.0
+      "matched_fund_name": "BGF - WORLD MINING FUND A2 (SGD-H)",
+      "manager": "BLACKROCK",
+      "currency": "SGD",
+      "price": 9.03,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.698,
+      "needs_review": true
     },
     {
       "target_fund_name": "BlackRock Global Funds - World Technology Fund A2",
       "target_manager": "BlackRock",
-      "best_score": 0.0
+      "matched_fund_name": "BGF - WORLD TECHNOLOGY FUND A2 JPY-H",
+      "manager": "BLACKROCK",
+      "currency": "JPY",
+      "price": 3462.0,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.691,
+      "needs_review": true
     },
     {
       "target_fund_name": "Fidelity Funds - Global Financial Services Fund A-Acc-SGD",
       "target_manager": "Fidelity International",
-      "best_score": 0.0
+      "matched_fund_name": "FIDELITY FUNDS - GLOBAL FINANCIAL SERVICES FUND A-ACC-SGD",
+      "manager": "FIL INVESTMENT MANAGEMENT (S) LTD",
+      "currency": "SGD",
+      "price": 2.983,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 1.0,
+      "needs_review": false
     },
     {
       "target_fund_name": "Franklin Global Sukuk Fund A(Mdis)SGD",
       "target_manager": "Franklin Templeton",
-      "best_score": 0.0
+      "matched_fund_name": "FTSF - FRANKLIN GLOBAL SUKUK FUND A (MDIS) SGD",
+      "manager": "TEMPLETON ASSET MANAGEMENT LTD",
+      "currency": "SGD",
+      "price": 7.75,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.914,
+      "needs_review": false
     },
     {
       "target_fund_name": "Franklin Income Fund A(Mdis)SGD-H1",
       "target_manager": "Franklin Templeton",
-      "best_score": 0.0
+      "matched_fund_name": "FTIF - FRANKLIN INCOME FUND A(MDIS) (SGD-H1)",
+      "manager": "TEMPLETON ASSET MANAGEMENT LTD",
+      "currency": "SGD",
+      "price": 6.4,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.895,
+      "needs_review": false
     },
     {
       "target_fund_name": "Franklin India Fund A(acc)SGD",
       "target_manager": "Franklin Templeton",
-      "best_score": 0.0
+      "matched_fund_name": "LIONGLOBAL INDIA FUND A (SGD)",
+      "manager": "LIONGLOBAL INVESTORS LIMITED",
+      "currency": "SGD",
+      "price": 2.44,
+      "price_date": "13 Aug 2026",
+      "match_confidence": 0.69,
+      "needs_review": true
     },
     {
       "target_fund_name": "Franklin Technology Fund A (Acc) USD",
       "target_manager": "Franklin Templeton",
-      "best_score": 0.0
+      "matched_fund_name": "FTIF - FRANKLIN TECHNOLOGY FUND A (ACC) USD",
+      "manager": "TEMPLETON ASSET MANAGEMENT LTD",
+      "currency": "USD",
+      "price": 77.17,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.935,
+      "needs_review": false
     },
     {
       "target_fund_name": "Fundsmith Equity Fund R EUR Acc",
       "target_manager": "Fundsmith",
-      "best_score": 0.0
+      "matched_fund_name": "FIDELITY FUNDS - ASIA EQUITY ESG FUND SR ACC (SGD)",
+      "manager": "FIL INVESTMENT MANAGEMENT (S) LTD",
+      "currency": "SGD",
+      "price": 3.432,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.608,
+      "needs_review": true
     },
     {
       "target_fund_name": "HSBC Global Investment Funds - Asia Bond S47M3HSGD",
       "target_manager": "HSBC AM",
-      "best_score": 0.0
+      "matched_fund_name": "HSBC GLOBAL INVESTMENT FUND ASIA HIGH YIELD BOND (AM3HSGD)",
+      "manager": "HSBC GLOBAL ASSET MANAGEMENT (SINGAPORE) LIMITED",
+      "currency": "SGD",
+      "price": 4.297,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.83,
+      "needs_review": true
     },
     {
       "target_fund_name": "HSBC Global Investment Funds - Asia Pacific ex Japan Equity High Dividend S48M2SGD",
       "target_manager": "HSBC AM",
-      "best_score": 0.0
+      "matched_fund_name": "HSBC GLOBAL INVESTMENT FUND ASIA HIGH YIELD BOND (AM3HSGD)",
+      "manager": "HSBC GLOBAL ASSET MANAGEMENT (SINGAPORE) LIMITED",
+      "currency": "SGD",
+      "price": 4.297,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.667,
+      "needs_review": true
     },
     {
       "target_fund_name": "HSBC Global Investment Funds - Global Equity Climate Transition AD",
       "target_manager": "HSBC AM",
-      "best_score": 0.0
+      "matched_fund_name": "HSBC GLOBAL INVESTMENT FUND ASIA HIGH YIELD BOND (AM3HAUD)",
+      "manager": "HSBC GLOBAL ASSET MANAGEMENT (SINGAPORE) LIMITED",
+      "currency": "AUD",
+      "price": 4.605,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.607,
+      "needs_review": true
     },
     {
       "target_fund_name": "HSBC Global Investment Funds - Global Short Duration Bond ACHSGD",
       "target_manager": "HSBC AM",
-      "best_score": 0.0
+      "matched_fund_name": "HSBC GLOBAL INVESTMENT FUND ASIA HIGH YIELD BOND (AM3HSGD)",
+      "manager": "HSBC GLOBAL ASSET MANAGEMENT (SINGAPORE) LIMITED",
+      "currency": "SGD",
+      "price": 4.297,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.717,
+      "needs_review": true
     },
     {
       "target_fund_name": "HSBC Global Investment Funds - Indian Equity AD",
       "target_manager": "HSBC AM",
-      "best_score": 0.0
-    },
-    {
-      "target_fund_name": "HSBC Life Asian Balanced",
-      "target_manager": "HSBC Life",
-      "best_score": 0.0
+      "matched_fund_name": "HSBC GLOBAL INVESTMENT FUND ASIA HIGH YIELD BOND (AM3HAUD)",
+      "manager": "HSBC GLOBAL ASSET MANAGEMENT (SINGAPORE) LIMITED",
+      "currency": "AUD",
+      "price": 4.605,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.68,
+      "needs_review": true
     },
     {
       "target_fund_name": "HSBC Life Asian Growth",
       "target_manager": "HSBC Life",
-      "best_score": 0.0
+      "matched_fund_name": "SCHRODER ASIAN GROWTH FUND (SGD)",
+      "manager": "SCHRODER INVESTMENT MANAGEMENT (S) LTD",
+      "currency": "SGD",
+      "price": 4.595,
+      "price_date": "13 Aug 2026",
+      "match_confidence": 0.556,
+      "needs_review": true
     },
     {
       "target_fund_name": "HSBC Life Emerging Markets Opportunities Fund",
       "target_manager": "HSBC Life",
-      "best_score": 0.0
-    },
-    {
-      "target_fund_name": "HSBC Life Fortress Fund A",
-      "target_manager": "HSBC Life",
-      "best_score": 0.0
+      "matched_fund_name": "SCHRODERS GLOBAL EMERGING MARKET OPPORTUNITIES FUND (SGD)",
+      "manager": "SCHRODER INVESTMENT MANAGEMENT (S) LTD",
+      "currency": "SGD",
+      "price": 2.137,
+      "price_date": "13 Aug 2026",
+      "match_confidence": 0.765,
+      "needs_review": true
     },
     {
       "target_fund_name": "HSBC Life Global Balanced Fund",
       "target_manager": "HSBC Life",
-      "best_score": 0.0
+      "matched_fund_name": "FIRST SENTIER GLOBAL BALANCED FUND A (SGD) ACC",
+      "manager": "FIRST SENTIER INVESTORS (SINGAPORE)",
+      "currency": "SGD",
+      "price": 1.3637,
+      "price_date": "08 Jun 2026",
+      "match_confidence": 0.658,
+      "needs_review": true
     },
     {
       "target_fund_name": "HSBC Life Global Growth Fund",
       "target_manager": "HSBC Life",
-      "best_score": 0.0
+      "matched_fund_name": "LIONGLOBAL CHINA GROWTH FUND (SGD)",
+      "manager": "LIONGLOBAL INVESTORS LIMITED",
+      "currency": "SGD",
+      "price": 3.768,
+      "price_date": "13 Aug 2026",
+      "match_confidence": 0.645,
+      "needs_review": true
     },
     {
       "target_fund_name": "HSBC Life Global High Growth Fund",
       "target_manager": "HSBC Life",
-      "best_score": 0.0
+      "matched_fund_name": "LIONGLOBAL CHINA GROWTH FUND (SGD)",
+      "manager": "LIONGLOBAL INVESTORS LIMITED",
+      "currency": "SGD",
+      "price": 3.768,
+      "price_date": "13 Aug 2026",
+      "match_confidence": 0.687,
+      "needs_review": true
     },
     {
       "target_fund_name": "HSBC Life Global Perspective Fund",
       "target_manager": "HSBC Life",
-      "best_score": 0.0
+      "matched_fund_name": "HSBC ISLAMIC GLOBAL EQUITY INDEX FUND ICEUR",
+      "manager": "HSBC GLOBAL ASSET MANAGEMENT (SINGAPORE) LIMITED",
+      "currency": "EUR",
+      "price": 21.034,
+      "price_date": "13 Aug 2026",
+      "match_confidence": 0.579,
+      "needs_review": true
     },
     {
       "target_fund_name": "HSBC Life Global Secure Fund",
       "target_manager": "HSBC Life",
-      "best_score": 0.0
+      "matched_fund_name": "HSBC ISLAMIC GLOBAL EQUITY INDEX FUND ICEUR",
+      "manager": "HSBC GLOBAL ASSET MANAGEMENT (SINGAPORE) LIMITED",
+      "currency": "EUR",
+      "price": 21.034,
+      "price_date": "13 Aug 2026",
+      "match_confidence": 0.648,
+      "needs_review": true
     },
     {
       "target_fund_name": "HSBC Life Greater China Fund",
       "target_manager": "HSBC Life",
-      "best_score": 0.0
+      "matched_fund_name": "FIDELITY FUNDS - GREATER CHINA FUND (USD)",
+      "manager": "FIL INVESTMENT MANAGEMENT (S) LTD",
+      "currency": "USD",
+      "price": 348.3,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.657,
+      "needs_review": true
     },
     {
       "target_fund_name": "HSBC Life India Opportunities Fund",
       "target_manager": "HSBC Life",
-      "best_score": 0.0
+      "matched_fund_name": "ABRDN INDIA OPPORTUNITIES FUND (SGD)",
+      "manager": "ABERDEEN ASSET MANAGEMENT ASIA LIMITED",
+      "currency": "SGD",
+      "price": 4.7783,
+      "price_date": "13 Aug 2026",
+      "match_confidence": 0.743,
+      "needs_review": true
     },
     {
       "target_fund_name": "HSBC Life Shariah Global Equity",
       "target_manager": "HSBC Life",
-      "best_score": 0.0
+      "matched_fund_name": "FTSF - TEMPLETON SHARIAH GLOBAL EQUITY FUND A (ACC) SGD",
+      "manager": "TEMPLETON ASSET MANAGEMENT LTD",
+      "currency": "SGD",
+      "price": 22.6,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.619,
+      "needs_review": true
     },
     {
       "target_fund_name": "HSBC Life Short Duration Bond",
       "target_manager": "HSBC Life",
-      "best_score": 0.0
+      "matched_fund_name": "LIONGLOBAL SHORT DURATION BOND FUND (SGD) ACC",
+      "manager": "LIONGLOBAL INVESTORS LIMITED",
+      "currency": "SGD",
+      "price": 1.2761,
+      "price_date": "13 Aug 2026",
+      "match_confidence": 0.595,
+      "needs_review": true
     },
     {
       "target_fund_name": "HSBC Life Singapore Balanced Fund",
       "target_manager": "HSBC Life",
-      "best_score": 0.0
+      "matched_fund_name": "FULLERTON SINGAPORE VALUE-UP FUND SGD ACC",
+      "manager": "FULLERTON FUND MANAGEMENT COMPANY LTD",
+      "currency": "SGD",
+      "price": 1.31,
+      "price_date": "13 Aug 2026",
+      "match_confidence": 0.568,
+      "needs_review": true
     },
     {
       "target_fund_name": "HSBC Life Singapore Bond Fund",
       "target_manager": "HSBC Life",
-      "best_score": 0.0
+      "matched_fund_name": "EASTSPRING INVESTMENTS - SINGAPORE SELECT BOND FUND CLASS AD",
+      "manager": "EASTSPRING INVESTMENTS (S) LTD",
+      "currency": "SGD",
+      "price": 0.981,
+      "price_date": "13 Aug 2026",
+      "match_confidence": 0.552,
+      "needs_review": true
     },
     {
       "target_fund_name": "HSBC Life Singapore Equity Fund",
       "target_manager": "HSBC Life",
-      "best_score": 0.0
-    },
-    {
-      "target_fund_name": "HSBC Portfolios - World Selection 5 AMFLXHSGD",
-      "target_manager": "HSBC AM",
-      "best_score": 0.0
+      "matched_fund_name": "ABRDN SINGAPORE EQUITY FUND (SGD)",
+      "manager": "ABERDEEN ASSET MANAGEMENT ASIA LIMITED",
+      "currency": "SGD",
+      "price": 11.5987,
+      "price_date": "13 Aug 2026",
+      "match_confidence": 0.719,
+      "needs_review": true
     },
     {
       "target_fund_name": "Janus Henderson Horizon Discovering New Alpha Fund A2 HSGD Acc",
       "target_manager": "Janus Henderson",
-      "best_score": 0.0
+      "matched_fund_name": "JANUS HENDERSON HORIZON PAN EUROPEAN ABSOLUTE RETURN FUND A2 SGD-H",
+      "manager": "JANUS HENDERSON INVESTORS",
+      "currency": "SGD",
+      "price": 15.43,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.672,
+      "needs_review": true
     },
     {
       "target_fund_name": "JPMorgan Funds - Greater China Fund A (acc) USD",
       "target_manager": "JPMorgan",
-      "best_score": 0.0
+      "matched_fund_name": "JPMORGAN FUNDS - GREATER CHINA FUND A (ACC) SGD",
+      "manager": "JPMORGAN ASSET MANAGEMENT (S) LTD",
+      "currency": "SGD",
+      "price": 43.61,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.978,
+      "needs_review": false
     },
     {
       "target_fund_name": "JPMorgan Funds - India Fund A (acc) USD",
       "target_manager": "JPMorgan",
-      "best_score": 0.0
+      "matched_fund_name": "JPMORGAN FUNDS - CHINA FUND A (ACC) USD",
+      "manager": "JPMORGAN ASSET MANAGEMENT (S) LTD",
+      "currency": "USD",
+      "price": 49.97,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.946,
+      "needs_review": false
     },
     {
       "target_fund_name": "JPMorgan Investment Funds - Global Income Fund A (mth) SGD (hedged)",
       "target_manager": "JPMorgan",
-      "best_score": 0.0
+      "matched_fund_name": "JPMORGAN INV FUNDS - GLOBAL INCOME C (MTH) - USD (HEDGED)",
+      "manager": "JPMORGAN ASSET MANAGEMENT (S) LTD",
+      "currency": "USD",
+      "price": 145.74,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.864,
+      "needs_review": false
     },
     {
       "target_fund_name": "JPMorgan Investment Funds - Global Income Fund A (mth) USD (hedged)",
       "target_manager": "JPMorgan",
-      "best_score": 0.0
+      "matched_fund_name": "JPMORGAN INV FUNDS - GLOBAL INCOME C (MTH) - USD (HEDGED)",
+      "manager": "JPMORGAN ASSET MANAGEMENT (S) LTD",
+      "currency": "USD",
+      "price": 145.74,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.881,
+      "needs_review": false
     },
     {
       "target_fund_name": "Mirova Funds - Mirova Global Sustainable Equity Fund R/A-NPF (USD)",
       "target_manager": "Natixis",
-      "best_score": 0.0
+      "matched_fund_name": "ABRDN GLOBAL SUSTAINABLE EQUITY FUND (SGD)",
+      "manager": "ABERDEEN ASSET MANAGEMENT ASIA LIMITED",
+      "currency": "SGD",
+      "price": 1.7385,
+      "price_date": "13 Aug 2026",
+      "match_confidence": 0.717,
+      "needs_review": true
     },
     {
       "target_fund_name": "Neuberger Strategic Income Fund SGD A (Monthly) Distributing Class",
       "target_manager": "Neuberger Berman",
-      "best_score": 0.0
+      "matched_fund_name": "NEUBERGER BERMAN STRATEGIC INCOME FUND USD I DISTRIBUTING CLASS",
+      "manager": "NEUBERGER BERMAN",
+      "currency": "USD",
+      "price": 10.15,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.837,
+      "needs_review": true
     },
     {
       "target_fund_name": "PGIM Global Total Return Bond Fund SGD Hedged A Distribution (Q) Class",
       "target_manager": "PGIM",
-      "best_score": 0.0
-    },
-    {
-      "target_fund_name": "Pictet-Premium Brands HP SGD",
-      "target_manager": "Pictet",
-      "best_score": 0.0
+      "matched_fund_name": "FTIF - TEMPLETON GLOBAL TOTAL RETURN FUND A(MDIS) USD",
+      "manager": "TEMPLETON ASSET MANAGEMENT LTD",
+      "currency": "USD",
+      "price": 7.85,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.562,
+      "needs_review": true
     },
     {
       "target_fund_name": "PIMCO GIS Income Fund Administrative SGD (Hedged) Income",
       "target_manager": "PIMCO",
-      "best_score": 0.0
+      "matched_fund_name": "PIMCO GIS INCOME FUND ADMIN SGD-H MDIST",
+      "manager": "PIMCO ASIA PTE LTD",
+      "currency": "SGD",
+      "price": 9.09,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.737,
+      "needs_review": true
     },
     {
       "target_fund_name": "PineBridge Asia ex Japan Small Cap Equity Fund Class A5",
       "target_manager": "PineBridge",
-      "best_score": 0.0
+      "matched_fund_name": "FTGF ROYCE US SMALL CAP OPPORTUNITY FUND CLASS A AUDH ACC",
+      "manager": "LEGG MASON ASSET MANAGEMENT (S) PTE LTD",
+      "currency": "AUD",
+      "price": 342.28,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.571,
+      "needs_review": true
     },
     {
       "target_fund_name": "Robeco Credit Income BxH SGD",
       "target_manager": "Robeco",
-      "best_score": 0.0
+      "matched_fund_name": "AMSELECT ROBECO GLOBAL CREDIT INCOME (USD)",
+      "manager": "BNP PARIBAS ASSET MANAGEMENT SINGAPORE LTD",
+      "currency": "USD",
+      "price": 100.91,
+      "price_date": "13 Aug 2026",
+      "match_confidence": 0.657,
+      "needs_review": true
     },
     {
       "target_fund_name": "Schroder Asian Growth Fund Class SGD A Distribution Units",
       "target_manager": "Schroders",
-      "best_score": 0.0
+      "matched_fund_name": "SCHRODER ASIAN GROWTH FUND SGD C ACC",
+      "manager": "SCHRODER INVESTMENT MANAGEMENT (S) LTD",
+      "currency": "SGD",
+      "price": 4.796,
+      "price_date": "13 Aug 2026",
+      "match_confidence": 0.688,
+      "needs_review": true
     },
     {
       "target_fund_name": "Schroder Asian Income SGD X Dis",
       "target_manager": "Schroders",
-      "best_score": 0.0
+      "matched_fund_name": "SCHRODER ASIAN INCOME CLASS (SGD) A DIS",
+      "manager": "SCHRODER INVESTMENT MANAGEMENT (S) LTD",
+      "currency": "SGD",
+      "price": 1.011,
+      "price_date": "13 Aug 2026",
+      "match_confidence": 0.857,
+      "needs_review": false
     },
     {
       "target_fund_name": "Schroder Global Emerging Market Opportunities Fund",
       "target_manager": "Schroders",
-      "best_score": 0.0
+      "matched_fund_name": "SCHRODERS GLOBAL EMERGING MARKET OPPORTUNITIES FUND (SGD)",
+      "manager": "SCHRODER INVESTMENT MANAGEMENT (S) LTD",
+      "currency": "SGD",
+      "price": 2.137,
+      "price_date": "13 Aug 2026",
+      "match_confidence": 0.935,
+      "needs_review": false
     },
     {
       "target_fund_name": "Schroder International Selection Fund Asian Dividend Maximiser A Distribution SGD Hedged M",
       "target_manager": "Schroders",
-      "best_score": 0.0
+      "matched_fund_name": "SCHRODER INTERNATIONAL SELECTION ASIAN OPPORTUNITIES C ACC",
+      "manager": "SCHRODER INVESTMENT MANAGEMENT (S) LTD",
+      "currency": "USD",
+      "price": 49.4241,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.608,
+      "needs_review": true
     },
     {
       "target_fund_name": "Schroder International Selection Fund Asian Dividend Maximiser A Distribution USD MF",
       "target_manager": "Schroders",
-      "best_score": 0.0
+      "matched_fund_name": "SCHRODER INTERNATIONAL SELECTION ASIAN OPPORTUNITIES C ACC",
+      "manager": "SCHRODER INVESTMENT MANAGEMENT (S) LTD",
+      "currency": "USD",
+      "price": 49.4241,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.634,
+      "needs_review": true
     },
     {
       "target_fund_name": "Schroder International Selection Fund Global Equity Alpha A Accumulation USD",
       "target_manager": "Schroders",
-      "best_score": 0.0
+      "matched_fund_name": "SCHRODER INTERNATIONAL SELECTION ASIAN OPPORTUNITIES C ACC",
+      "manager": "SCHRODER INVESTMENT MANAGEMENT (S) LTD",
+      "currency": "USD",
+      "price": 49.4241,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.627,
+      "needs_review": true
     },
     {
       "target_fund_name": "Schroder International Selection Fund Taiwanese Equity A Accumulation USD",
       "target_manager": "Schroders",
-      "best_score": 0.0
+      "matched_fund_name": "SCHRODER INTERNATIONAL SELECTION ASIAN OPPORTUNITIES C ACC",
+      "manager": "SCHRODER INVESTMENT MANAGEMENT (S) LTD",
+      "currency": "USD",
+      "price": 49.4241,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.672,
+      "needs_review": true
     },
     {
       "target_fund_name": "Schroder Multi-Asset Revolution 30 A SGD Accumulation",
       "target_manager": "Schroders",
-      "best_score": 0.0
+      "matched_fund_name": "SCHRODER MULTI-ASSET REVOLUTION CLASS A (SGD)",
+      "manager": "SCHRODER INVESTMENT MANAGEMENT (S) LTD",
+      "currency": "SGD",
+      "price": 1.737,
+      "price_date": "13 Aug 2026",
+      "match_confidence": 0.776,
+      "needs_review": true
     },
     {
       "target_fund_name": "Schroder Multi-Asset Revolution 50",
       "target_manager": "Schroders",
-      "best_score": 0.0
+      "matched_fund_name": "SCHRODER MULTI-ASSET REVOLUTION CLASS A (SGD)",
+      "manager": "SCHRODER INVESTMENT MANAGEMENT (S) LTD",
+      "currency": "SGD",
+      "price": 1.737,
+      "price_date": "13 Aug 2026",
+      "match_confidence": 0.81,
+      "needs_review": true
     },
     {
       "target_fund_name": "Schroder Multi-Asset Revolution 70",
       "target_manager": "Schroders",
-      "best_score": 0.0
+      "matched_fund_name": "SCHRODER MULTI-ASSET REVOLUTION CLASS A (SGD)",
+      "manager": "SCHRODER INVESTMENT MANAGEMENT (S) LTD",
+      "currency": "SGD",
+      "price": 1.737,
+      "price_date": "13 Aug 2026",
+      "match_confidence": 0.81,
+      "needs_review": true
     },
     {
       "target_fund_name": "Schroder Singapore Fixed Income Fund Class A Acc",
       "target_manager": "Schroders",
-      "best_score": 0.0
+      "matched_fund_name": "SCHRODER ASIAN ASSET INCOME FUND USD A DIS",
+      "manager": "SCHRODER INVESTMENT MANAGEMENT (S) LTD",
+      "currency": "USD",
+      "price": 10.0821,
+      "price_date": "13 Aug 2026",
+      "match_confidence": 0.689,
+      "needs_review": true
     },
     {
       "target_fund_name": "Schroder Singapore Trust SGD A Dis",
       "target_manager": "Schroders",
-      "best_score": 0.0
+      "matched_fund_name": "SCHRODER SINGAPORE TRUST CLASS A (SGD)",
+      "manager": "SCHRODER INVESTMENT MANAGEMENT (S) LTD",
+      "currency": "SGD",
+      "price": 2.506,
+      "price_date": "13 Aug 2026",
+      "match_confidence": 0.778,
+      "needs_review": true
     },
     {
       "target_fund_name": "Templeton Shariah Global Equity Fund A(acc)SGD",
       "target_manager": "Franklin Templeton",
-      "best_score": 0.0
+      "matched_fund_name": "FTSF - TEMPLETON SHARIAH GLOBAL EQUITY FUND A (ACC) SGD",
+      "manager": "TEMPLETON ASSET MANAGEMENT LTD",
+      "currency": "SGD",
+      "price": 22.6,
+      "price_date": "14 Aug 2026",
+      "match_confidence": 0.929,
+      "needs_review": false
     },
     {
       "target_fund_name": "United SGD Fund - Class A SGD Acc",
       "target_manager": "UOBAM",
-      "best_score": 0.0
+      "matched_fund_name": "FULLERTON USD INCOME FUND - CLASS A (SGD-H)",
+      "manager": "FULLERTON FUND MANAGEMENT COMPANY LTD",
+      "currency": "SGD",
+      "price": 0.752,
+      "price_date": "13 Aug 2026",
+      "match_confidence": 0.611,
+      "needs_review": true
     },
     {
       "target_fund_name": "United Singapore Bond Fund - Class A SGD Acc",
       "target_manager": "UOBAM",
-      "best_score": 0.0
+      "matched_fund_name": "LIONGLOBAL SINGAPORE PHYSICAL GOLD FUND CLASS A SGD (ACC)",
+      "manager": "LIONGLOBAL INVESTORS LIMITED",
+      "currency": "SGD",
+      "price": 1.0102,
+      "price_date": "13 Aug 2026",
+      "match_confidence": 0.707,
+      "needs_review": true
+    }
+  ],
+  "unmatched": [
+    {
+      "target_fund_name": "HSBC Life Asian Balanced",
+      "target_manager": "HSBC Life",
+      "best_score": 0.484
+    },
+    {
+      "target_fund_name": "HSBC Life Fortress Fund A",
+      "target_manager": "HSBC Life",
+      "best_score": 0.509
+    },
+    {
+      "target_fund_name": "HSBC Portfolios - World Selection 5 AMFLXHSGD",
+      "target_manager": "HSBC AM",
+      "best_score": 0.462
+    },
+    {
+      "target_fund_name": "Pictet-Premium Brands HP SGD",
+      "target_manager": "Pictet",
+      "best_score": 0.456
     }
   ]
 }
