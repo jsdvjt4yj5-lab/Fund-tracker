@@ -1,6 +1,6 @@
 {
   "source": "https://sslsecure.maybank.com.sg/scripts/mbb_ut_pricelist.jsp",
-  "last_scraped": "2026-11-09T05:25:26+00:00",
+  "last_scraped": "2026-11-09T22:05:28+00:00",
   "matched_count": 66,
   "unmatched_count": 4,
   "funds": [
@@ -351,8 +351,8 @@
       "matched_fund_name": "HSBC ISLAMIC GLOBAL EQUITY INDEX FUND ICEUR",
       "manager": "HSBC GLOBAL ASSET MANAGEMENT (SINGAPORE) LIMITED",
       "currency": "EUR",
-      "price": 20.167,
-      "price_date": "05 Nov 2026",
+      "price": 20.294,
+      "price_date": "06 Nov 2026",
       "match_confidence": 0.579,
       "needs_review": true
     },
@@ -362,8 +362,8 @@
       "matched_fund_name": "HSBC ISLAMIC GLOBAL EQUITY INDEX FUND ICEUR",
       "manager": "HSBC GLOBAL ASSET MANAGEMENT (SINGAPORE) LIMITED",
       "currency": "EUR",
-      "price": 20.167,
-      "price_date": "05 Nov 2026",
+      "price": 20.294,
+      "price_date": "06 Nov 2026",
       "match_confidence": 0.648,
       "needs_review": true
     },
@@ -560,8 +560,8 @@
       "matched_fund_name": "AMSELECT ROBECO GLOBAL CREDIT INCOME (USD)",
       "manager": "BNP PARIBAS ASSET MANAGEMENT SINGAPORE LTD",
       "currency": "USD",
-      "price": 98.52,
-      "price_date": "05 Nov 2026",
+      "price": 98.42,
+      "price_date": "06 Nov 2026",
       "match_confidence": 0.657,
       "needs_review": true
     },
@@ -681,8 +681,8 @@
       "matched_fund_name": "SCHRODER ASIAN ASSET INCOME FUND USD A DIS",
       "manager": "SCHRODER INVESTMENT MANAGEMENT (S) LTD",
       "currency": "USD",
-      "price": 9.4448,
-      "price_date": "05 Nov 2026",
+      "price": 9.3517,
+      "price_date": "06 Nov 2026",
       "match_confidence": 0.689,
       "needs_review": true
     },
